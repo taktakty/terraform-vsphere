@@ -46,6 +46,7 @@ resource "vsphere_virtual_machine" "vm" {
   disk {
     label = "${var.vm_name}.vmdk"
     size  = data.vsphere_virtual_machine.template.disks.0.size
+    thin_provisioned = data.vsphere_virtual_machine.template.disks.0.thin_provisioned
   }
 
   clone {

@@ -68,7 +68,7 @@ variable "vm_domain" {
   description = "Domain for the vSphere virtual machine"
 }
 
-variable "vm_cpu" {
+variable "vm_cpus" {
   description = "Number of vCPU for the vSphere virtual machines"
 }
 

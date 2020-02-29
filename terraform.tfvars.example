@@ -39,7 +39,7 @@ vm_template = ""
 vm_linked_clone = "false"
 
 # The number of vCPU allocated to the virtual machine #
-vm_cpu = "1"
+vm_cpus = "1"
 
 # The amount of RAM allocated to the virtual machine #
 vm_ram = "1024"
