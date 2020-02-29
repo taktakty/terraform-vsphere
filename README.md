@@ -4,7 +4,7 @@ How to use
 ## Set vairables
 
 ```
-mv terraform.example.tfvars terraform.tfvars
+mv terraform.tfvars.example terraform.tfvars
 # input variables in terraform.tfvars
 export TF_VAR_vsphere_user={user}
 export TF_VAR_vsphere_password={password}
