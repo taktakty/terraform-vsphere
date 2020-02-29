@@ -45,7 +45,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   disk {
     label = "${var.vm_name}.vmdk"
-    size  = data.vsphere_virtual_machine.template.disks.0.size
+    size = var.vm_disk
     thin_provisioned = data.vsphere_virtual_machine.template.disks.0.thin_provisioned
   }
 
@@ -69,5 +69,30 @@ resource "vsphere_virtual_machine" "vm" {
       ipv4_gateway    = var.vm_gateway
       dns_server_list = [var.vm_dns]
     }
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "mkdir ~/.ssh"
+    ]
+    connection {
+      type     = "ssh"
+      user     = var.vm_user
+      password = var.vm_password
+      host     = var.vm_ip
+    }
+  }
+  provisioner "file" {
+    source      = "~/.ssh/id_rsa.pub"
+    destination = "~/.ssh/authorized_keys"
+  
+    connection {
+      type     = "ssh"
+      user     = var.vm_user
+      password = var.vm_password
+      host     = var.vm_ip
+    }
+  }
+  provisioner "local-exec" {
+    command = "ansible-playbook resize.yml -i ${var.vm_ip}, -u ${var.vm_user} --private-key=~/.ssh/id_rsa -vvv"
   }
 }

@@ -44,5 +44,8 @@ vm_cpus = "1"
 # The amount of RAM allocated to the virtual machine #
 vm_ram = "1024"
 
+# The amount of Disk allocated to the virtual machine #
+vm_disk = "32"
+
 # The IP address of the virtual machine #
 vm_ip = ""

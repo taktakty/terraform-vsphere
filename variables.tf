@@ -73,9 +73,21 @@ variable "vm_cpus" {
 }
 
 variable "vm_ram" {
-  description = "Amount of RAM for the vSphere virtual machines (example: 2048)"
+  description = "Amount of RAM(MB) for the vSphere virtual machines (example: 2048)"
+}
+
+variable "vm_disk" {
+  description = "Amount of Disk(GB) for the vSphere virtual machines (example: 32)"
 }
 
 variable "vm_name" {
   description = "The name of the vSphere virtual machines and the hostname of the machine"
+}
+
+variable "vm_user" {
+  description = "Specify ssh login user"
+}
+
+variable "vm_password" {
+  description = "Specify ssh login password"
 }
