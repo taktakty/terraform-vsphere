@@ -93,6 +93,6 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
   provisioner "local-exec" {
-    command = "ansible-playbook resize.yml -i ${var.vm_ip}, -u ${var.vm_user} --private-key=~/.ssh/id_rsa -vvv"
+    command = "ansible-playbook resize.yml -i ${var.vm_ip}, -u ${var.vm_user} --private-key=~/.ssh/id_rsa --ssh-extra-args=-oStrictHostKeyChecking=no -vvv"
   }
 }
